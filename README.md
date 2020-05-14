@@ -13,13 +13,17 @@ Als Administrator muss die Powershell geöffnet werden, zum Beispiel einfach üb
 3. Auf der Wirt-vm:
     - Drücke Windows-Taste + R und gib ein: "gpedit.msc"
     - Navigiere “Local Computer Policy > Computer Configuration > Administrative Templates > Windows Components > Windows Remote Management (WinRM) > WinRM Client”
-    - Unter Trusted Hosts setze  “Trust the remote machine” auf "Enable" und bei "TrustedHostList" schreibe "*" hinein.
+         - Unter Trusted Hosts setze  “Trust the remote machine” auf "Enable" und bei "TrustedHostList" schreibe " * " hinein.
+         - unter "Allow unencrypted traffic" auf "Enable"
     
     Auf der Opfer-vm:
     - Drücke Windows-Taste + R und gib ein: "gpedit.msc"
-    - Navigiere “Local Computer Policy > Computer Configuration > Administrative Templates > Windows Components > Windows Remote Management (WinRM) > WinRM 
-    -
-    -
+    - Navigiere “Local Computer Policy > Computer Configuration > Administrative Templates > Windows Components > Windows Remote Management (WinRM) > WinRM Service
+         - Unter "Allow remote server management through WinRM auf "Enabled" und bei IPv4 Filter und IPv6 Filter jeweils ein " * " eingeben
+         - unter "Allow unencrypted traffic" auf "Enable"
+    - Navigiere “Local Computer Policy > Computer Configuration > Administrative Templates > Windows Components > Windows Remote Management (WinRM) > WinRM Client”
+         - Unter Trusted Hosts setze  “Trust the remote machine” auf "Enable" und bei "TrustedHostList" schreibe " * " hinein.
+
     - In die Powershell: 
       > Set-Item wsman:\localhost\client\trustedhosts * -Force
       
