@@ -16,5 +16,5 @@ New-Item -Path "c:\mal" -Name "HalloWelt.txt" -ItemType "file" -Value "Hallo Wel
 
 if ($param) {
 echo "$param1"
-    #Invoke-Command -ComputerName $param1 -FilePath Get-Location + "\mal.ps1"
+    Invoke-Command -ComputerName $param1 -FilePath Get-Location + "\mal.ps1"
 }
